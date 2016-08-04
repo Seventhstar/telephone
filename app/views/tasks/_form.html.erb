@@ -1,0 +1,56 @@
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Наименование:</label><br>
+    <%= f.text_field :name, class: 'fullrow' %>
+  </div>
+  <div class="field fullrow">
+    <label>Описание:</label><br>
+    <%= f.text_area :description, class: 'fullrow', rows: '10' %>
+  </div>
+
+  <div class="">
+    <div class="col-md-4">
+      <div class="field"><label>Область:</label><br><%= chosen_src :component_id, Component.all, @task %></div>
+      <div class="field"><label>Исполнитель:</label><br><%= chosen_src 'task[executor_id]', User.all, @executor_id %></div>
+      <div class="field"><label>Приоритет:</label><br><%= chosen_src 'task[priority_id]', Priority.all, @priority_id %></div>
+    </div>
+  <div class="col-md-4">
+    <div class="field"><label>Состояние:</label><br><%= chosen_src 'task[state_id]', State.all, @state_id %></div>
+    <div class="field"><label>Тип задачи:</label><br><%= chosen_src 'task[task_type_id]', TaskType.all, @type_id %></div>
+    <div class="field left"><label>Дата начала:</label><br><%= f.text_field :start_date, class: 'datepicker' %></div>
+    <div class="field left"><label>Дата окончания:</label><br><%= f.text_field :end_date, class: 'datepicker' %></div>
+    <div class="field left"><label>Часов план:</label><br><%= f.number_field :hours_plan %></div>
+    <div class="field left"><label>факт:</label><br><%= f.number_field :hours_fact %></div>
+  </div>
+  <div class="col-md-4 right">
+    <div class="field"><label>Заказчик:</label><br>
+      <%= f.hidden_field :client_id   %>
+      <% # chosen_src 'task[user_id]', User.all, @user_id %>
+      <%= f.text_field :client_name, data: {autocomplete_source: clients_path} %> </div>
+
+    <div class="field"><label>Отдел:</label><br><%= chosen_src 'task[dept_id]', TaskDept.all, @dept %></div>
+    <div class="field left"><label>Дата размещения:</label><br><%= f.text_field :place_date, value: @date_place.try('strftime',"%d.%m.%Y") ,class: 'datepicker' %></div>
+    <div class="field left"><label>Порядок:</label><br><%= f.number_field :cur_order %></div>
+
+  </div>
+  </div>
+
+<div class="sep_15"></div>
+  <div class="actions right">
+    <%= submit_cancel tasks_stored_page %>
+  </div>
+<% end %>
+
+<div class="sep_15"></div>

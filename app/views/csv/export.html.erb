@@ -1,0 +1,38 @@
+<p>
+  Download:
+  <%= link_to "CSV", phones_path(format: "csv") %> |
+  <%= link_to "Excel", phones_path(format: "xls") %>
+</p>
+
+
+
+
+<table class="pretty">
+  <tr>
+    <th>ФИО</th>
+    <th>Должность</th>
+    <th>Телефон</th>
+  </tr>
+
+ <% for phone in @phones.where(:otdel_id=>0) %>
+  <tr>
+    <td><b><%= phone.name %></b></td>
+    <td><b><%= phone.position_name %></b></td>
+    <td><b><%= phone.number %></b></td>
+  </tr>
+<% end %>
+
+<% for otdel in @otdels %>
+  <tr>
+    <td colspan="3" align="center" bgcolor="#efefef"><b><%= otdel.name %></b></td>
+ </tr>
+
+ <% for phone in otdel.phones %>
+  <tr>
+    <td><%= phone.name %></td>
+    <td><%= phone.position_name %></td>
+    <td><%= phone.number %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

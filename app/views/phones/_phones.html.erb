@@ -1,0 +1,37 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="pretty">
+  <tr>
+    <th width="250px"><%= sortable "name", "ФИО" %></th>
+    <th width="312px"><%= sortable "otdel_id","Отдел" %></th>
+    <th  width="312px"><%= sortable "position_id","Должность" %></th>
+    <th><%= image_tag('Telephone.png')%><%= sortable "number","Телефон" %></th>
+    <th><%= image_tag('door.png')%><%= sortable "room","Кабинет" %></th>
+    <% if admin? %>
+    <th><%= "IP" %></th>
+    <th><%= "Имя компьютера" %></th>
+
+    <th width="60"></th>
+    <% end %>
+  </tr>
+
+ <% for phone in @phones %>
+  <tr>
+    <td><%= link_to phone.name, phone, :title=>phone.Duties %></td>
+    <td><%= link_to (phone.otdel_id == 0 ? "" : phone.otdel_name), phone.otdel %></td>
+    <td><%= (phone.position_id == 0 ? "" : phone.position_name) %></td>
+    <td><%= phone.number %></td>
+    <td><%= phone.room %></td>
+   <% if current_user && admin? %>
+    <td><%= phone.IP %></td>
+    <td><%= phone.CompName %></td>
+
+    <td><%= link_to image_tag('edit.png'), edit_phone_path(phone) %>
+    <%= link_to image_tag('delete.png'), phone, data: {confirm: 'Are you sure?'}, method: :delete %></td>
+   <% end %>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @phones %>

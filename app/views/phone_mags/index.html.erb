@@ -1,0 +1,37 @@
+<h1>Listing phone_mags</h1>
+
+<table class="pretty">
+  <tr>
+    <th>Name</th>
+    <th>Fio</th>
+    <th>Number</th>
+    <th>Email / 
+    Mobile</th>
+    <th>Work time</th>
+     <% if current_user && admin? %>
+        <th></th>
+        <% end -%>
+  </tr>
+
+<% @phone_mags.each do |phone_mag| %>
+<% if phone_mag %>
+  <tr>
+    <td><%= phone_mag.name.html_safe %></td>
+    <td><%= phone_mag.fio.html_safe %></td>
+    <td><%= phone_mag.number.html_safe %></td>
+    <td><%= phone_mag.email %></br>
+    <%= phone_mag.mobile %></td>
+    <td><%= phone_mag.work_time.html_safe %></td>
+     <% if current_user && admin? %>
+    <td>
+    <%= link_to 'Edit', edit_phone_mag_path(phone_mag) %>
+    <%= link_to 'Destroy', phone_mag, confirm: 'Are you sure?', method: :delete %></td>
+    <% end -%>
+   </tr>
+   <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Phone mag', new_phone_mag_path %>

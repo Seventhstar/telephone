@@ -1,0 +1,34 @@
+
+<% for maintenance in @maintenance %>
+  
+
+  <div class="alert alert-error bs-callout1 bs-callout-danger1">
+    <div class="media-object"><%= image_tag(maintenance.img_name)%></div>
+    <div><%= maintenance.service_text %>  </div>
+  </div>
+    
+<% end %>
+
+<% content_for :title do %>
+  <%= 'Внутренние телефоны' %>
+<% end %>
+
+
+
+<%= form_tag phones_path, :method => 'get', :id => "f_search" do %>
+  <p>
+    ФИО/Телефон: <%= text_field_tag :srch, params[:srch] %>
+    По каким вопросам обращаться: <%= text_field_tag :dsearch, params[:dsearch] %>
+    <%= submit_tag "Поиск", :name => nil, :class=>"button_search" %>
+  </p>
+  <div id="phones"><%= render 'phones' %></div>
+<% end %>
+
+
+
+<br />
+
+<% if current_user && admin? %>
+  <%= link_to 'Добавить', new_phone_path , :class=>"button" %>
+<% end %>
+

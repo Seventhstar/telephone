@@ -1,0 +1,15 @@
+<h1>Список отчетов 1С</h1>
+
+<%= form_tag reports_path, :method => 'get', :id => "f_search" do %>
+  <p>
+    Ключевое слово: <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Поиск", :name => nil, :class=>"button_search" %>
+  </p>
+  <div id="reports"><%= render 'reports' %></div>
+<% end %>
+
+
+<% if current_user && admin? %>
+  <%= link_to 'Добавить отчет', new_report_path, :class=>"button" %>
+<% end %>
+

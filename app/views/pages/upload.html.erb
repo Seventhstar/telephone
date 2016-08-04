@@ -1,0 +1,14 @@
+<h1>Pages#upload</h1>
+<p>Find me in app/views/pages/upload.html.erb</p>
+
+<%= form_for :upload, :html => { :multipart => true } do |f| %>
+  <div class="field">
+      <label for="dump_file">
+        Select a CSV File :
+      </label>
+       <%= f.file_field :file %>
+  </div>
+  <div class="actions">
+       <%= submit_tag 'Submit' %>
+  </div>
+<% end %>

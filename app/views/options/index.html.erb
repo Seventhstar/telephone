@@ -1,0 +1,23 @@
+<div class="sidebar">
+
+  <div id="accordion" class="menu_sb menu_sb_a" active=<%= get_active_option_page %> >
+  <h3 class="first">Справочники:</h3><div><ul>
+			<%= option_li("otdels","Отделы") %>
+			<%= option_li("positions","Должности") %>
+      <%= option_li("bases","Базы") %>
+  </ul></div>	  
+   <h3>Импорт:</h3><div><ul>
+          <%= option_li("csv/import","Телефоны",'2') %>
+          <%= option_li("csv/import_mag","Телефоны магазинов",'1') %>
+  </ul></div>
+
+</div>
+</div>
+
+<div class="content option_list">
+        <%= render("shared/simple_option") %>
+<div class="sep_3"></div>
+</div>
+
+
+</div>

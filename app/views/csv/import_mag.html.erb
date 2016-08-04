@@ -1,0 +1,15 @@
+<h1>Csv#import</h1>
+
+<%= form_for :upload, :html => { :multipart => true } do |f| %>
+
+<div class="fileinputs">
+        <%= f.file_field :csv, :class => "file"%>
+	<div class="fakefile">
+		<input />
+		<span>выберите файл</span>
+	</div>
+</div>
+ </br>
+  <%= f.submit "Upload", :disable_with => 'Uploading...' %>
+<% end %>
+

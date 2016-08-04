@@ -1,0 +1,48 @@
+<div class="sidebar">
+
+  <ul class="accordion" active=<%= get_active_option_page %>>
+    <li id="one3" class="files">
+    <a href="#">Справочники:</a>
+      <ul class="sub-menu">
+    			<%= option_li("otdels","Отделы") %>
+    			<%= option_li("positions","Должности") %>
+          <%= option_li("bases","Базы") %>
+      </ul>
+    </li>
+    <li id="one31" class="files">
+    <a href="#">Задачи:</a>
+      <ul class="sub-menu">
+          <%= option_li("priorities","Важность") %>
+          <%= option_li("states","Состояния") %>
+          <%= option_li("task_types","Типы задач") %>
+          <%= option_li("components","Области задач") %>
+          <%= option_li("task_depts","Отделы") %>
+          <%= option_li("clients","Заказчики") %>
+      </ul>
+    </li>
+
+   <li id="two" class="files">
+    <a href="#">Импорт:</a>
+    <ul class="sub-menu">
+			    <%= option_li("/csv/import","Телефоны",'1') %>
+          <%= option_li("/csv/import_mag","Телефоны магазинов",'2') %>
+    </ul>
+   </li>
+   <li id="t3" class="files">
+    <a>Экспорт:</a>
+    <ul class="sub-menu">
+          <%= option_li("/csv/export","xls/csv",'1') %>
+    </ul>
+  </li>
+  </ul>
+
+
+</div>
+
+<div class="content option_list">
+        <%= render("shared/simple_option") %>
+<div class="sep_3"></div>
+</div>
+
+
+</div>

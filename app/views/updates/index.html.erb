@@ -1,0 +1,31 @@
+<h1>Список релизов</h1>
+
+<div class="panel panel-default">
+<table class="table table-striped table-hover tableSorter fullrow">
+  <thead>
+    <tr>
+      <th>Конфигурация</th>
+      <th>Текущее</th>
+      <th>Доступно</th>
+      <th>Дата выхода</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @releases.each do |update| %>
+      <tr>
+        <td><%= update[1][:name] %></td>
+        <td><%= update[1][:current] %></td>
+        <td><%= update[1][:available] %></td>
+        <td><%= update[1][:date] %></td>
+	         <%= edit_delete(update[1][:path]) %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'Новый', new_update_path, class: 'button' %>

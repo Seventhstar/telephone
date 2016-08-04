@@ -1,0 +1,52 @@
+<table class="pretty">
+  <tr>
+    <th>Магазин</th>
+    <th>ФИО Управляющего</th>
+    <th>Номер</th>
+    <th>Email / 
+      Мибильный телефон</th>
+      <th>Рабочее время</th>
+      <th>Состояние</th>
+      <% if admin? %>
+        <th></th>
+        <% end -%>
+    </tr>
+
+
+    <% for group_mag in @group_mags %>
+
+    <% if @phones.where('group_mag_id = ?', group_mag.id).count >0 %>
+    <tr>
+      <td colspan="6"><h3><%= group_mag.name %></h3></td>
+      <% if admin? %>
+      <td><%= link_to image_tag('edit.png'), edit_group_mag_path(group_mag) %>
+        <%= link_to image_tag('delete.png'), group_mag, confirm: 'Are you sure?', method: :delete %></td>
+      <% end -%>
+      </tr>
+      <% end %>
+
+
+      <% group_mag.PhoneMags.search( params[:search_mag] ).each do |phone_mag| %>
+      <% if phone_mag %>
+        <tr>
+          <td><%= phone_mag.name.try(:html_safe) %></td>
+          <td><%= phone_mag.fio.try(:html_safe) %></td>
+          <td><%= phone_mag.number.try(:html_safe) %></td>
+          <td><%= mail_to phone_mag.email,image_tag('mail.png',{alt: phone_mag.email})  %>
+            <%= phone_mag.mobile %></td>
+            <td><%= phone_mag.work_time.try(:html_safe) %></td>
+            <td></td>
+            <% if admin? %>
+            
+            <td>
+              <%= link_to image_tag('edit.png'), edit_phone_mag_path(phone_mag) %>
+              <%= link_to image_tag('delete.png'), phone_mag, confirm: 'Are you sure?', method: :delete %></td>
+            </tr>
+            <% end -%>
+
+            <% end %>
+          <% end %>
+
+          <% end %>
+</table>
+

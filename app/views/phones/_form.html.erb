@@ -1,0 +1,76 @@
+<%= form_for(@phone) do |f| %>
+  <% if @phone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h2>
+
+      <ul>
+      <% @phone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field fio">
+ <div class="col-xs-6">
+   <table class="fio">
+      <tr>
+
+      <td><%= f.label "Номер телефона" %><br />
+          <%= f.text_field :number %></td>
+      <td>    <%= f.label "Кабинет" %><br />
+          <%= f.text_field :room %></td>
+      </tr>
+   </table>
+
+  <div class="field">
+    <%= f.label "ФИО" %><br/>
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "Отдел" %><br />
+    <%= f.hidden_field :otdel_id %>
+    <%= f.autocomplete_field :otdel_name, autocomplete_otdel_name_phones_path,  :id_element => '#phone_otdel_id' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Должность" %><br />
+    <%= f.autocomplete_field :position_name, autocomplete_position_name_phones_path,  :id_element => '#phone_position_id' %>
+    <%= f.hidden_field :position_id %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "IP" %><br />
+    <%= f.text_field :IP %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Имя компьютера" %><br />
+    <%= f.text_field :CompName %>
+  </div>
+
+  <div class="field">
+
+  </div>
+    <div class="actions">
+    <%= f.submit "Записать" , :class=>"button"%>
+    <%= link_to 'Назад', phones_path, :class=>"button" %>
+  </div>
+
+</div>
+
+<div class="col-xs-6">
+     <div class="text">
+      <%= f.label "Обращаться по вопросам:" %><br />
+      <%= f.text_area :Duties, :size => "80x14", :id=>"duties" %>
+     </div>
+</div>
+
+  </br>
+
+
+
+<% end %>

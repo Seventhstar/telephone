@@ -1,0 +1,14 @@
+<p>
+  <b>Отдел:</b>
+  <%= @otdel.name %>
+</p>
+
+<% unless @otdel.phones.empty? %>
+   <%= render 'phones/phones_otd' %>
+<% end %>
+
+
+<%= link_to 'Редактировать', edit_otdel_path(@otdel) %> |
+<%= link_to 'К списку телефонов', phones_path %> |
+<%= link_to 'К списку отделов', otdels_path %>
+

@@ -1,0 +1,18 @@
+<div class="compact-theme compact-pagination">
+<nav class="round21">
+  <%= render_navigation :level => 1 %>
+</nav>
+</div>
+<div id="user_nav" class="user_menu1">
+  <% if current_user %>
+    Вы зашли как <%= current_user.name %>.
+    <%= link_to "Выйти", logout_path %>
+  <% else %>
+    <%= link_to "Войти", login_path %>
+  <% end %>
+</div>
+
+
+<div class="subnav">
+  <%= render "submenu" %>
+</div>

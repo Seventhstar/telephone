@@ -1,0 +1,28 @@
+<h1>Список серверов</h1>
+
+<div class="panel panel-default">
+<table class="table table-striped table-hover tableSorter fullrow">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Path</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servers.each do |server| %>
+      <tr>
+        <td><%= server.name %></td>
+        <td><%= server.path %></td>
+	       <%= edit_delete(server) %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+<br>
+
+<%= link_to 'New Server', new_server_path, class: 'button' %>

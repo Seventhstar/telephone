@@ -1,0 +1,45 @@
+<div id="table-content">
+<table class="pretty full_width">
+  <thead>
+    <tr>
+      <th rowspan="2" width="4px" class='no_space'></th>
+      <th rowspan="2">Задача</th>
+      <th width="80px" rowspan="2">Область</th>
+      <th width="70px" rowspan="2">Заказчик</th>
+      <th width="70px" rowspan="2"><%= @order == :start_date ? 'Состояние' : 'Дата изменения' %> </th>
+      <th width="6px" rowspan="2">Дата нач.</th>
+
+      <th width="75px" colspan="2">Время</th>
+      <th colspan="2"></th>
+    </tr>
+    <tr>
+      <th width="30px">План</th>
+      <th width="30px">Факт</th>
+      <th width="12px">#</th>
+      <th width="18px"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |t| %>
+      <tr class="<%= class_of_task(t) %>">
+        <td class='no_space <%= class_of_week(t.start_date) %>'></td>
+        <td><%= tooltip(t.name, t.description) %></td>
+        <td><%= t.component_name %></td>
+
+        <td><%= tooltip(t.dept_name,t.client_name) %></td>
+
+        <td><%= tooltip( @order == :start_date ? t.state_name : t.updated_at.try('strftime',"%d.%m.%Y"), 'Исполнитель: '+t.executor_name) %></td>
+
+        <td><%= tooltip( t.start_date.try('strftime',"%d.%m.%Y") , 'Размещена: '+t.place_date.try('strftime',"%d.%m.%Y") ) %></td>
+
+
+        <td><%= t.hours_plan %></td>
+        <td><%= t.hours_fact %></td>
+        <td><%= t.cur_order %></td>
+        <%= td_tool_icons(t, 'edit') %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

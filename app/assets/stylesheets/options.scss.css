@@ -1,0 +1,42 @@
+.sidebar{float: left; width: 214px; }
+.container {  width: 1200px;    margin: 0 auto;}
+
+.sidebar{float: left; width: 214px; }
+
+.body.sb_left {}
+.body.sb_left .sidebar{float:left;}
+.content{float:right; width: 946px; }
+
+span.icon { width: 16px;  height: 16px; display: inline-block; vertical-align:middle; position:relative; }
+span.icon:hover{ cursor: pointer; }
+
+span.icon_apply{background: url('apply.png') no-repeat;}
+span.icon_cancel{background: url('cancel.png') no-repeat;}
+
+
+
+/*.menu_sb {margin:0 0 0 0; font-size: 14px; }
+/*.menu_sb div{margin-bottom: 5px;}*/
+/*.menu_sb .head, .menu_sb h3{ border: 1px solid #f2f2f2; padding: 10px 10px 10px 20px; font-weight: 500; font-size: 100%; margin: 0; }
+.menu_sb h3 {border-radius: 5px; margin-top: 10px;}
+.menu_sb h3.first {margin-top: 0;}
+.menu_sb h3.ui-state-active{border-radius: 5px 5px 0 0;}
+.menu_sb h3:hover,.menu_sb .ui-state-active{ cursor: pointer; background: #f2f2f2;}
+
+.menu_sb ul{margin: 1px 0 0 0; padding: 0 0 0 0; list-style:none;}
+.menu_sb ul li{margin: -1px 0 10px 0; padding: 0 0 0 0; background:none;}
+.menu_sb ul li a{display: block; border:1px solid #e5e5e5; padding: 10px 19px 10px 19px; color: #000000; position:relative; text-decoration:none; border-radius: 5px;}
+.menu_sb ul li a .pict, h3 a .pict .icon {display: inline-block; height: 14px; margin:0 7px 0 0; text-decoration: none;}
+.menu_sb ul li a .pict .icon{top:-1px;}
+.menu_sb ul li a:hover,
+.menu_sb ul li.active a{background: #6acc00; background: linear-gradient(to top, #6acc00, #6acc00); padding-left: 20px; padding-right: 20px; color: #fff; border-left: 0; border-right: 0;}
+
+.menu_sb_a ul li {margin:-1px 0 0 0;}
+.menu_sb_a ul li a {border-radius: 0;}
+.menu_sb_a ul li:last-child a{border-radius: 0 0 5px 5px;}
+.menu_sb_a ul li a:after{content: ' '; display: none; width: 16px; height: 39px; background: asset-url('arr1.png') no-repeat 0 0; position:absolute; top: 0; left: 100%;}
+.menu_sb_a ul li.active a{}
+.menu_sb_a ul li.active a:after{display: block; }
+.menu_sb_a ul li:first-child a{border-radius: 0;}
+.menu_sb_a ul li:last-child.active a{border-radius: 0;}*/
+

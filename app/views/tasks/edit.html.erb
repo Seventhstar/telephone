@@ -1,0 +1,8 @@
+<div class="hl">Редактирование задачи
+<% if current_user.admin? %>
+  <%= link_to "", @task, method: :delete, data: { confirm: 'Действительно удалить?' }, :class=>"icon icon_remove right" %>
+<% end %>
+</div>
+
+<%= render 'form' %>
+

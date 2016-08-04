@@ -1,0 +1,27 @@
+<div id="h1_otdel"><%= image_tag("department.png") %> <span>Список отделов</span></div>
+
+<table class="pretty">
+  <tr>
+    <th>Наименование</th>
+     <% if current_user && admin? %>
+     <th></th>
+     <% end -%>
+
+  </tr>
+
+<% @otdels.each do |otdel| %>
+  <tr>
+    <td><%= link_to otdel.name,  otdel %></td>
+   <% if current_user && admin? %>
+    <td><%= link_to image_tag('edit.png'), edit_otdel_path(otdel) %>
+    <%= link_to image_tag('delete.png'), otdel, confirm: 'Are you sure?', method: :delete %>
+    </td>
+    <% end -%>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить отдел', new_otdel_path, :class=>"button" %>

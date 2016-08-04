@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%= @mobile.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @mobile.number %>
+</p>
+
+<p>
+  <b>Otdel:</b>
+  <%= @mobile.otdel_id %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @mobile.position_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_mobile_path(@mobile) %> |
+<%= link_to 'Back', mobiles_path %>

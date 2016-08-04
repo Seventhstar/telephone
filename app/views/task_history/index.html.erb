@@ -1,0 +1,57 @@
+<% cur_day = nil %>
+<% first_table = true %>
+
+<div class="nav nav-pills">
+  <%= menu_li "Прогресс", 'task_history' %>
+  <%= menu_li "Список задач", :tasks %>
+
+  <%= link_to 'Новая задача', new_task_path, class: "button right space20" %>
+</div>
+
+
+
+<% @history.each do |version| %>
+
+  <% day = (version['created_at'] +3.hours).beginning_of_day %>
+
+    <% if cur_day != day %>
+      <% if !first_table %> </ul></div> <% end %>
+      <% first_table = false %>
+      <% cur_day = day %>
+      <div class="item">
+        <div class="hl"><%= day.try('strftime',"%d.%m.%Y") %></div>
+        <ul>
+    <% end %>
+
+    <% author = find_version_author_name(version) %>
+    <% _obj = get_version_details(version) %>
+
+    <li><span><%= (version['created_at']+3.hours).try('strftime',"%H:%M:%S") %></span>
+      <% if version['event'] == 'update' %>
+
+        <% if _obj['inf']['ch'].count ==1 && _obj['inf']['ch'][0]['field'] == 'Состояние' %>
+           - <%= author %>. Задача <%= State.find_by_id(_obj['inf']['ch'][0]['to']).try(:l_name) %> - <span class="date"><%= raw(link_to_obj(version["item_type"], version['item_id'])) %></span></span>
+        <% else %>
+          <% v = _obj['inf']['ch'][0] %>
+          - <%= author %>. Изменения в объекте: <span class="date"><%= raw(link_to_obj(version["item_type"], version['item_id'])) %></span>
+
+          <ul>
+            <% if !v.nil? %>
+              <% v['description'].each do |descr| %>
+                <li><%= raw(descr) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% else %>
+          <span> - <%= author %></span>. <span><%= raw(_obj['inf']['desc']) %></span>
+      <% end %>
+    </li>
+
+
+<% end %>
+
+
+  <div id="pagination">
+  <%= render 'shared/pagination' %>
+  </div>

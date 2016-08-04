@@ -1,0 +1,35 @@
+<div class="nav nav-pills">
+  <%= menu_li "Список задач", :tasks %>
+  <%= menu_li "Прогресс", 'task_history' %>
+  <%= link_to 'Новая задача', new_task_path, class: "button right space20" %>
+</div>
+<br/>
+
+<%= form_tag tasks_path, :method => 'get', :id => "search", class: 'index_filter', controller: 'tasks' do %>
+
+<div class="menu">
+<div class="left">
+    <%= text_field_tag :search, params[:search], :class => "search_area txt slim_txt", :placeholder=>"Поиск...", aname: controller.action_name, cname: controller.controller_name %>
+</div>
+
+<div class="combobox short_search left space20">
+	<label class="combobox left"><%= chosen_src :priority_id, Priority.order(:id), params[:priority_id], {order: 'id', nil_value: 'Любая важность...'} %></label>
+	<label class="combobox left"><%= chosen_src :state_id, State.all, params[:state_id], {nil_value: 'Активные задачи...'} %></label>
+	<label class="combobox left"><%= chosen_src :dept_id, TaskDept.all, params[:dept_id], {nil_value: 'Отдел...'} %> </label>
+	<label class="combobox left"><%= chosen_src :task_type_id, TaskType.all, params[:dept_id], {nil_value: 'Вид...'} %></label>
+	<label class="combobox left"><%= chosen_src :component_id, Component.all, params[:component_id], {nil_value: 'Все области...'} %></label>
+  <label class="combobox left"><%= chosen_src :executor_id, User.with_tasks, @executor, {nil_value: 'Исполнитель...'} %></label>
+</div>
+
+<% end %>
+
+<% only_actual_btn( {actual_text: 'Мои'}) %>
+
+</div>
+
+<div class="sep_15"></div>
+
+<%= render 'tasks' %>
+
+
+

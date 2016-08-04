@@ -1,0 +1,26 @@
+<%= form_for(@otdel) do |f| %>
+  <% if @otdel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@otdel.errors.count, "error") %> prohibited this otdel from being saved:</h2>
+
+      <ul>
+      <% @otdel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Наименование" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  </br>
+
+  <div class="actions">
+    <%= f.submit "Записать" , :class=>"button" %>
+  </div>
+
+
+<% end %>

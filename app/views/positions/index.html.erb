@@ -1,0 +1,24 @@
+<h1>Список должностей</h1>
+
+<table class="pretty">
+  <tr>
+    <th>Должность</th>
+     <% if current_user && admin? %>
+    	<th width="60"></th>
+    	<% end -%>
+  </tr>
+
+<% @positions.each do |position| %>
+  <tr>
+    <td><%= position.name %></td>
+     <% if current_user && admin? %>
+    <td><%= link_to image_tag('edit.png'), edit_position_path(position) %>
+    <%= link_to image_tag('delete.png'), position, confirm: 'Are you sure?', method: :delete %></td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новая должность', new_position_path, :class=>"button" %>

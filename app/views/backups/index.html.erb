@@ -1,0 +1,52 @@
+<h1>Список бэкапов</h1>
+
+
+<div class="panel panel-default">
+<table class="table table-striped table-hover tableSorter">
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Время</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @servers.each do |key,value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= time_with_timeago value, false %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</br>
+
+<div class="panel panel-default">
+<table class="table table-striped table-hover tableSorter">
+  <thead>
+    <tr>
+      <th width='291px'>Имя</th>
+      <th width='500px'>Путь</th>
+      <th width='120px'>Время</th>
+      <th width='50px'>Тип</th>
+      <th width='120px'>Полный</th>
+      <th width='20px'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backups.each do |backup| %>
+      <tr>
+        <td><%= backup[1][:name] %></td>
+        <td><%= backup[1][:path] %></td>
+        <td><%= span_alt backup[1][:date], backup[1][:file] %></td>
+        <td><%= backup[1][:type] %></td>
+        <td><%= time_with_timeago backup[1][:full] %></td>
+        <%= edit_delete(backup[1][:link]) %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'Новый бэкап', new_backup_path, class: 'button' %>

@@ -1,0 +1,24 @@
+<table class="pretty">
+  <tr>
+    <th><%= "ФИО" %></th>
+    <th><%= "Должность" %></th>
+    <th><%= image_tag('Telephone.png')%></th>
+       <% if current_user && admin? %>
+    <th width="40"></th>
+    <% end -%>
+  </tr>
+
+ <% for phone in @phones %>
+  <tr>
+    <td><%= phone.name %></td>
+    <td><%= (phone.position_id == 0 ? "" : phone.position.name) %></td>
+    <td><%= phone.number %></td>
+       <% if current_user && admin? %>
+    <td><%= link_to image_tag('edit.png'), edit_phone_path(phone) %>
+    <%= link_to image_tag('delete.png'), phone, confirm: 'Are you sure?', method: :delete %></td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+
+

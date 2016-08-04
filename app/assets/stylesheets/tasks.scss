@@ -1,0 +1,43 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_task .field.left, .edit_task .field.left{ margin-right: 20px; }
+
+#new_task .chosen-container, .edit_task .chosen-container {width: 256px;}
+.ui-autocomplete-input {width: 244px; padding: 0 4px;}
+#task_place_date {width: 123px;}
+#task_cur_order {width: 90px;}
+#task_hours_plan,#task_hours_fact {width: 35px;}
+
+#new_task .datepicker, .edit_task .datepicker {width: 107px; padding-left: 4px;}
+.datepicker { background: asset-url('ico-date.png') 97% 3px no-repeat; cursor: pointer;}
+
+.index_filter .button {padding: 0 5px;}
+
+.switcher_a { margin-top: 2px; width: 140px; float: right; }
+.switcher_a .link_a { text-decoration: none; text-align: right; padding: 0 5px; min-width: 78px; }
+.switcher_a .scale {  float: right; width: 44px; height: 19px; background: #fff; border: 1px solid #dedede; border-radius: 10px; position: relative; cursor: pointer;}
+.switcher_a.toggled .scale {background: #009ddd;}
+.switcher_a .handle {
+    float: right;
+    width: 17px; height: 17px; position: absolute;top: 0; left: 0;
+    border: 1px solid #ccc; background: #fff; border-radius: 50%;
+    cursor: pointer;
+    transition: left 0.2s ease;
+}
+
+.switcher_a .handle.active { left: 27px; background: #fff; border: 1px solid #ccc; }
+.index_filter select{width: 150px; margin-right: 12px;}
+
+.pririty1 {background-color: #fdd;}
+.pririty3 {background-color: #fea;}
+.task_done {background-color:#effbe0;}
+.task_accept {background-color:#d3ecb5;}
+
+.pretty td.no_space, .pretty th.no_space {padding:0; background-color: white;}
+.pretty td.this_week {background-color: red;}
+.pretty td.next_week {background-color: green;}
+.pretty td.week_2 {background-color: #fea;}
+
+// .overflow {overflow: hidden;}

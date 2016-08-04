@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ФИО</Data></Cell>
+        <Cell><Data ss:Type="String">Должность</Data></Cell>
+        <Cell><Data ss:Type="String">Телефон</Data></Cell>
+      </Row>
+
+  <% for phone in @phones.where(:otdel_id=>0) %>
+   <Row>
+        <Cell><Data ss:Type="String"><%= phone.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= phone.position_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= phone.number %></Data></Cell>
+      </Row>
+    <% end %>
+  <% for otdel in @otdels %>
+    <Row>
+        <Cell><Data ss:Type="String"> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= otdel.name %></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+      </Row>
+    <% for phone in otdel.phones %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= phone.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= phone.position_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= phone.number %></Data></Cell>
+      </Row>
+    <% end %>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

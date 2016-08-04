@@ -1,0 +1,17 @@
+<% content_for :title do %>
+  <%= 'Телефоны магазинов' %>
+<% end %>
+
+<h1></h1>
+
+<%= form_tag group_mags_path, :method => 'get', :id => "group_mags_search" do %>
+  <p>
+    <% text_field_tag :search_mag, params[:search] %>
+    <% submit_tag "Поиск", :name => nil, :class=>"button_search" %>
+  </p>
+  <div id="group_mags"><%= render 'group_mags' %></div>
+<% end %>
+
+<% if admin? %>
+<%= link_to 'New Group mag', new_group_mag_path %>
+<% end -%>

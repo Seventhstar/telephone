@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @backup.name %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @backup.path %>
+</p>
+
+<%= link_to 'Edit', edit_backup_path(@backup) %> |
+<%= link_to 'Back', backups_path %>

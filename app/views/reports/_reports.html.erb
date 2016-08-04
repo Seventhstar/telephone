@@ -1,0 +1,30 @@
+<table  class="pretty">
+  <thead>
+    <tr>
+      <th width="190px">Наименование</th>
+      <th width="600px">Описание</th>
+      <th>Где в 1С</th>
+      <% if current_user && admin? %>
+      	<th>Путь на bj</th>
+      	<th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.name %></td>
+        <td><%= report.description %></td>
+        <td><%= report.path_1c %></td>
+        <% if current_user && admin? %>
+        	<td><%= report.path_fs %></td>
+        	<td><%= link_to image_tag('edit.png'), edit_report_path(report) %>
+    					<%= link_to image_tag('delete.png'), report, data: {confirm: 'Are you sure?'}, method: :delete %></td>
+   			<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
