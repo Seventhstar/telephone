@@ -9,13 +9,14 @@ class TasksController < ApplicationController
     @executor = params[:executor_id] || current_user.id
 
     all_ids = Task.all.ids
-    a_ids = p_ids = pst_ids = pd_ids = pt_ids = s_ids = c_ids = u_ids = e_ids = all_ids
+    a_ids = p_ids = pst_ids = pd_ids = pt_ids = s_ids = c_ids = u_ids = e_ids = cl_ids = all_ids
 
     p_ids   = Priority.find(params[:priority_id]).tasks.ids if !params[:priority_id].nil?
     pst_ids = State.find(params[:state_id]).tasks.ids if !params[:state_id].nil?
     pt_ids  = TaskType.find(params[:task_type_id]).tasks.ids if !params[:task_type_id].nil?
     pd_ids  = TaskDept.find(params[:dept_id]).tasks.ids if !params[:dept_id].nil?
     c_ids   = Component.find(params[:component_id]).tasks.ids if !params[:component_id].nil?
+    cl_ids   = Client.find(params[:client_id]).tasks.ids if !params[:client_id].nil?
     e_ids   = User.find(@executor).tasks.ids if !@executor.nil? && current_user.admin?
 
     if !params[:search].nil?
@@ -30,7 +31,7 @@ class TasksController < ApplicationController
       u_ids = current_user.dept.tasks.ids if !current_user.dept.nil?
     end
 
-    ids = all_ids & a_ids & p_ids & pst_ids & pd_ids & pt_ids & s_ids & c_ids & u_ids & e_ids
+    ids = all_ids & a_ids & p_ids & pst_ids & pd_ids & pt_ids & s_ids & c_ids & u_ids & e_ids & cl_ids
 
     @order = params[:state_id].nil? || params[:state_id].to_i < 5 ? :start_date : :updated_at
 
