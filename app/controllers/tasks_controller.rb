@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   include TasksHelper
   # GET /tasks
   def index
-
+    if !current_user.nil?
     params.delete_if{|k,v| v=='' || v=='0' }
     @only_actual = params[:state_id].nil?
     @executor = params[:executor_id] || current_user.id
@@ -37,6 +37,9 @@ class TasksController < ApplicationController
 
     @tasks = Task.where(:id => ids).order(:cur_order).order(@order)
     store_tasks_path(params)
+    else
+     @tasks =[]
+    end
   end
 
   # GET /tasks/1

@@ -10,6 +10,7 @@
 //= require jquery-ui/accordion
 //= require jquery-ui/datepicker
 //= require autocomplete-rails
+//= require ckeditor/init
 //= require jquery.fileupload
 //= require bootstrap
 //= require_self

@@ -1,5 +1,6 @@
 Telephone::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'task_history/index'
 
   get 'client/index'

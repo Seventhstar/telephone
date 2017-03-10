@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.2.0'
 
-gem 'sqlite3','1.3.10'
+gem 'sqlite3','1.3.12'
 gem 'will_paginate'
 gem 'simple-navigation'
 
@@ -51,3 +51,6 @@ gem 'paper_trail','~>4.0.0'
 gem 'yaml_db'
 gem 'nprogress-rails'
 gem 'chosen-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'ckeditor'
